@@ -1,9 +1,9 @@
 package com.nelsoft.droiddit.reddit;
 
-import com.timehop.droidcon2014retrofitsample.data.reddit.model.RedditComment;
-import com.timehop.droidcon2014retrofitsample.data.reddit.model.RedditLink;
-import com.timehop.droidcon2014retrofitsample.data.reddit.model.RedditListing;
-import com.timehop.droidcon2014retrofitsample.data.reddit.model.RedditMore;
+import com.nelsoft.droiddit.reddit.model.RedditComment;
+import com.nelsoft.droiddit.reddit.model.RedditLink;
+import com.nelsoft.droiddit.reddit.model.RedditListing;
+import com.nelsoft.droiddit.reddit.model.RedditMore;
 
 public enum RedditType {
   t1(RedditComment.class),

@@ -1,7 +1,7 @@
 package com.nelsoft.droiddit.reddit.model;
 
 import com.google.gson.JsonElement;
-import com.timehop.droidcon2014retrofitsample.data.reddit.RedditType;
+import com.nelsoft.droiddit.reddit.RedditType;
 
 public class RedditObjectWrapper {
   RedditType kind;
@@ -11,7 +11,7 @@ public class RedditObjectWrapper {
     return kind;
   }
 
-  public JsonElement getData() {
-    return data;
-  }
+    public JsonElement getData() {
+        return data;
+    }
 }

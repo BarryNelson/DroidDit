@@ -7,9 +7,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.droiddot.MainActivity;
-import com.example.droiddot.R;
-import com.example.droiddot.reddit_access.RedditPost;
+import com.nelsoft.droiddit.MainActivity;
+import com.nelsoft.droiddit.R;
 
 import java.util.ArrayList;
 import java.util.List;

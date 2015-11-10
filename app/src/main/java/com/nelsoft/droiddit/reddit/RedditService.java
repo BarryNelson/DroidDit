@@ -3,9 +3,9 @@ package com.nelsoft.droiddit.reddit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.timehop.droidcon2014retrofitsample.data.reddit.model.RedditListing;
-import com.timehop.droidcon2014retrofitsample.data.reddit.model.RedditObject;
-import com.timehop.droidcon2014retrofitsample.data.reddit.model.RedditResponse;
+import com.nelsoft.droiddit.reddit.model.RedditListing;
+import com.nelsoft.droiddit.reddit.model.RedditObject;
+import com.nelsoft.droiddit.reddit.model.RedditResponse;
 
 import org.joda.time.DateTime;
 
