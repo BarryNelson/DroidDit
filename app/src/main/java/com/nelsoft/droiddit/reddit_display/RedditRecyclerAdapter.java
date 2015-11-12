@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.nelsoft.droiddit.MainActivity;
 import com.nelsoft.droiddit.R;
 import com.nelsoft.droiddit.reddit.model.RedditLink;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,29 +48,12 @@ public class RedditRecyclerAdapter extends RecyclerView.Adapter<RedditRecyclerAd
         final RedditLink name = redditPostList.get(position);
 
         holder.lineLabel.setText(redditPostList.get(position).getName());
-        holder.lineDetail.setText("Footer: " + redditPostList.get(position).getTitle());
+        holder.lineDetail.setText(redditPostList.get(position).getTitle());
         holder.redditLink = redditPostList.get(position);
-        Log.i(TAG, "thumbnailURL = " + name.getThumbnail());
-        Picasso.with(context).load(name.getThumbnail()).into(holder.thumbnail);
-
-/*        Bitmap bitmapThumb = BitmapFactory.decodeStream((InputStream) new URL(name.getThumbnail()).getContent());
-
-        holder.thumbnail.setImageBitmap(bitmapThumb);
-
-
-        try {
-            holder.thumbnail.setImageBitmap();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-                //        holder.lineLabel.setOnClickListener(new OnClickListener() {
-                //            @Override
-                //            public void onClick(View v) {
-                //                RedditLink redditLink = redditPostList.get(position);
-                //                Log.i(TAG, "clicked on " + redditLink.getTitle()+" :"+redditLink.getUrl());
-                //            }
-                //        });
-
+//        Log.i(TAG, "thumbnailURL = " + name.getThumbnail());
+        Glide.with(context)
+                .load(name.getThumbnail())
+                .into(holder.thumbnail);
 
     }
 
@@ -107,7 +90,7 @@ public class RedditRecyclerAdapter extends RecyclerView.Adapter<RedditRecyclerAd
 
         @Override
         public void onClick(View view) {
-            System.out.println("--> onClick: "+redditLink.getUrl());
+            Log.i(TAG, "--> onClick: "+redditLink.getUrl());
         }
 
         public RedditLink getRedditLink() {

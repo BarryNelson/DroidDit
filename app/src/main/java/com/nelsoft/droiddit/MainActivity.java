@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
     
     private void initControls() {
 
-        searchValue = (EditText) findViewById(R.id.searchText);
+        searchValue = (EditText) findViewById(R.id.text_search);
 
-        ((ImageView) findViewById(R.id.imageSearch)).setOnClickListener(new View.OnClickListener() {
+        ((ImageView) findViewById(R.id.btn_Search)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ((ImageView) findViewById(R.id.clearSearchText)).setOnClickListener(new View.OnClickListener() {
+        ((ImageView) findViewById(R.id.btn_clear_text_search)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -147,13 +147,6 @@ public class MainActivity extends AppCompatActivity {
         redditRecyclerView.setLayoutManager(layoutManager);
 
         redditRecyclerAdapter = new RedditRecyclerAdapter(this, redditLinkList);
-
-//        redditRecyclerView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(TAG, "_______displayPostsInRecyclerView:setOnClickListener_______");
-//            }
-//        });
 
         redditRecyclerView.setAdapter(redditRecyclerAdapter);
 
