@@ -2,7 +2,6 @@ package com.nelsoft.droiddit.reddit_display;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,20 +12,21 @@ import android.widget.TextView;
 
 import com.nelsoft.droiddit.MainActivity;
 import com.nelsoft.droiddit.R;
+import com.nelsoft.droiddit.reddit.model.RedditLink;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RedditDisplayAdapter extends BaseAdapter {
 
-	ArrayList<RedditPost> redditPosts;
+	ArrayList<RedditLink> redditPosts;
 	private Activity context;
 	private LayoutInflater inflater;
-	private RedditPost post;
+	private RedditLink post;
 		
-	public RedditDisplayAdapter(MainActivity context, List<RedditPost> redditPosts) {
+	public RedditDisplayAdapter(MainActivity context, List<RedditLink> redditPosts) {
 		this.context = context;
-		this.redditPosts = (ArrayList<RedditPost>)redditPosts;
+		this.redditPosts = (ArrayList<RedditLink>)redditPosts;
 		
 		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
@@ -75,9 +75,9 @@ public class RedditDisplayAdapter extends BaseAdapter {
 		}
 
 		post = redditPosts.get(position);
-		Bitmap thumbnail = post.getThumbnail();
+        String thumbnail = post.getThumbnail();
 		
-		holder.thumbnail.setImageBitmap(thumbnail);
+//		holder.thumbnail.setImageBitmap(thumbnail);
 		holder.subReddit.setText("@"+post.getSubreddit());
 		holder.title.setText(post.getTitle());
 

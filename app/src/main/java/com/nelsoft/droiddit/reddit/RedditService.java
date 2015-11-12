@@ -48,9 +48,10 @@ public interface RedditService {
     }
 
     static RestAdapter.Builder getBuilder() {
-      return new RestAdapter.Builder()
-          .setConverter(new GsonConverter(getGson()))
-          .setEndpoint("http://www.reddit.com");
+      return new RestAdapter
+              .Builder()
+              .setConverter(new GsonConverter(getGson()))
+              .setEndpoint("http://www.reddit.com");
     }
 
     private static Gson getGson() {
