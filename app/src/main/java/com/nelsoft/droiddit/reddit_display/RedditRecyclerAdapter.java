@@ -16,7 +16,7 @@ import com.nelsoft.droiddit.reddit.model.RedditLink;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RedditRecyclerAdapter extends RecyclerView.Adapter<RedditRecyclerAdapter.ViewHolder> {
+public class RedditRecyclerAdapter extends RecyclerView.Adapter<RedditRecyclerAdapter.ViewHolder>{
 
     private final MainActivity context;
     private String TAG = "RedditRecyclerAdapter";
@@ -45,16 +45,57 @@ public class RedditRecyclerAdapter extends RecyclerView.Adapter<RedditRecyclerAd
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final RedditLink name = redditPostList.get(position);
+        final RedditLink redditLink = redditPostList.get(position);
 
-        holder.lineLabel.setText(redditPostList.get(position).getName());
-        holder.lineDetail.setText(redditPostList.get(position).getTitle());
-        holder.redditLink = redditPostList.get(position);
-//        Log.i(TAG, "thumbnailURL = " + name.getThumbnail());
+        // thumbnail
+        String thumbnailURL= null;
+        if (redditLink.getThumbnail().equals("nsfw")) {
+            thumbnailURL = redditLink.getUrl();
+            if (thumbnailURL.startsWith("http//imgur.com/")) {
+                StringBuffer temp = new StringBuffer(thumbnailURL);
+                temp.append(".jpg");
+                temp.insert(7, "i.");
+                thumbnailURL = temp.toString();
+                Log.i(TAG, ">>> " + redditLink.getAuthor() + ">>>> " + thumbnailURL);
+            } else {
+                Log.i(TAG, "[[ "+thumbnailURL+" ]]");
+            }
+        } else {
+            thumbnailURL = redditLink.getThumbnail();
+
+        }
         Glide.with(context)
-                .load(name.getThumbnail())
+                .load(thumbnailURL)
                 .into(holder.thumbnail);
 
+        holder.lineLabel.setText(redditPostList.get(position).getAuthor());
+        holder.lineDetail.setText(redditPostList.get(position).getTitle());
+        holder.redditLink = redditPostList.get(position);
+        //        Log.i(TAG, "thumbnailURL = " + name.getThumbnail());
+
+    }
+
+
+    /**
+     * itme is attached, may not be fully visible until scrolled completely into view
+     * @param holder
+     */
+    @Override
+    public void onViewAttachedToWindow(ViewHolder holder) {
+        Log.i(TAG, "AT>>" + holder.getAdapterPosition() + " : " + holder.getLayoutPosition());
+        if(getItemCount() - holder.getAdapterPosition() < 20 ){
+            Log.i(TAG, "Get more!");
+            context.getNext();
+        }
+        super.onViewAttachedToWindow(holder);
+    }
+
+    public void setCallback(MainActivity mainActivity) {
+
+    }
+
+    public interface Callback {
+        public void getNext();
     }
 
     // Return the size of your dataset (invoked by the layout manager)
